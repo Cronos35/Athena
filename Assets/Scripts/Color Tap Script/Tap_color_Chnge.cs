@@ -21,12 +21,23 @@ public class Tap_color_Chnge : MonoBehaviour
         RaycastHit hit;
         if (Physics.Raycast(ray, out hit))
         {
-            //rend = GetComponent<SpriteRenderer>();
-            //box1 = Resources.Load<Sprite>("Game Objects/Prefabs/Color tapping game squares_0");
-            // print(box1);
-            //print(hit.transform.GetComponent<SpriteRenderer>().sprite);
-            hit.transform.GetComponent<SpriteRenderer>().sprite = boxes[5];
-            
+           if(hit.transform.name!="")
+            {
+                /*
+                if (Input.touchCount > 0)
+                {
+                    Touch touch = Input.GetTouch(0);
+                    int rand = Random.Range(0, 8);
+                    hit.transform.GetComponent<SpriteRenderer>().sprite = boxes[rand];
+                }
+                */
+                if (Input.GetMouseButtonDown(0))
+                {
+                    int rand = Random.Range(0, 8);
+                    hit.transform.GetComponent<SpriteRenderer>().sprite = boxes[rand];
+                }
+
+            }
         }
         
     }
