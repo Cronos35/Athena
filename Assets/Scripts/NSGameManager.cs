@@ -44,8 +44,6 @@ public class NSGameManager : MonoBehaviour{
     	choice2.text = currentQuestion.choice2;
     	choice3.text = currentQuestion.choice3;
     	choice4.text = currentQuestion.choice4;
-
-
     }
 
     public void checkAnswer(Button btn){
@@ -91,21 +89,22 @@ public class NSGameManager : MonoBehaviour{
     	StartCoroutine(QuestionTimer());
 	 }
 
-	 public IEnumerator QuestionTimer(float countdownValue = 30)
-	 {
+    public IEnumerator QuestionTimer(float countdownValue = 30)
+    {
 
-	     currCountdownValue = countdownValue;
-	     while (currCountdownValue >= 0)
-	     {		
-	         if(gameOver){
-	         	yield break;
-	         }else{
-	         	timer.GetComponentInChildren<Text>().text = currCountdownValue.ToString();
-	         	yield return new WaitForSeconds(1.0f);
-	         	currCountdownValue--;
-	         }  
-	     }
-	 }
-
-
+        currCountdownValue = countdownValue;
+        while (currCountdownValue >= 0)
+        {
+            if (gameOver)
+            {
+                yield break;
+            }
+            else
+            {
+                timer.GetComponentInChildren<Text>().text = currCountdownValue.ToString();
+                yield return new WaitForSeconds(1.0f);
+                currCountdownValue--;
+            }
+        }
+    }
 }

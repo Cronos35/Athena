@@ -7,10 +7,10 @@ public class SwipeDetector : MonoBehaviour
     private Vector2 fingerUpPosition;
 
     [SerializeField]
-    private float minDistanceForSwipe = 20f;
+    private float minDistanceForSwipe = 1f;
 
     public static event Action<SwipeData> OnSwipe = delegate { };
-
+    
     private void Update()
     {
         foreach (Touch touch in Input.touches)
@@ -38,20 +38,17 @@ public class SwipeDetector : MonoBehaviour
   
     private void DetectSwipe()
     {
-        if (SwipeDistanceCheckMet())
+        if (IsVerticalSwipe())
         {
-            if (IsVerticalSwipe())
-            {
-                var direction = fingerDownPosition.y - fingerUpPosition.y > 0 ? SwipeDirection.Up : SwipeDirection.Down;
-                SendSwipe(direction);
-            }
-            else
-            {
-                var direction = fingerDownPosition.x - fingerUpPosition.x > 0 ? SwipeDirection.Right : SwipeDirection.Left;
-                SendSwipe(direction);
-            }
-            fingerUpPosition = fingerDownPosition;
+            var direction = fingerDownPosition.y - fingerUpPosition.y > 0 ? SwipeDirection.Up : SwipeDirection.Down;
+            SendSwipe(direction);
         }
+        else
+        {
+            var direction = fingerDownPosition.x - fingerUpPosition.x > 0 ? SwipeDirection.Right : SwipeDirection.Left;
+            SendSwipe(direction);
+        }
+        fingerUpPosition = fingerDownPosition;
     }
 
     private bool IsVerticalSwipe()
