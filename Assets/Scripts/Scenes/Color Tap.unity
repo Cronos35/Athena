@@ -805,7 +805,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4a230c96766f0f242ae914b63bec7690, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  boxes:
+  colors:
   - {fileID: 21300000, guid: 0814ef5024379244e9990707f67f8aef, type: 3}
   - {fileID: 21300002, guid: 0814ef5024379244e9990707f67f8aef, type: 3}
   - {fileID: 21300004, guid: 0814ef5024379244e9990707f67f8aef, type: 3}
@@ -815,6 +815,17 @@ MonoBehaviour:
   - {fileID: 21300012, guid: 0814ef5024379244e9990707f67f8aef, type: 3}
   - {fileID: 21300014, guid: 0814ef5024379244e9990707f67f8aef, type: 3}
   - {fileID: 21300016, guid: 0814ef5024379244e9990707f67f8aef, type: 3}
+  boxes:
+  - {fileID: 2021684777}
+  - {fileID: 1939185079}
+  - {fileID: 245208869}
+  - {fileID: 1186044555}
+  - {fileID: 575258451}
+  - {fileID: 934562709}
+  - {fileID: 1181238449}
+  - {fileID: 831289106}
+  - {fileID: 1904736858}
+  question: {fileID: 367167400}
 --- !u!4 &863433615
 Transform:
   m_ObjectHideFlags: 0
