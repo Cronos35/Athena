@@ -15,6 +15,7 @@ public class Tap_color_Chnge : MonoBehaviour
     private int[] box = { 0, 0, 0, 0, 0, 0, 0, 0, 0 };
     private int question_value = 0;
     
+    public int selected_box=0;
 
     //boxes
 
@@ -47,11 +48,57 @@ public class Tap_color_Chnge : MonoBehaviour
                 {
                     int rand = Random.Range(0, 8);
                     hit.transform.GetComponent<SpriteRenderer>().sprite = colors[rand];
+
                 }
 
             }
         }
         
+    }
+
+    void selected_Box()
+    {
+        Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+        RaycastHit hit;
+        if (Physics.Raycast(ray, out hit))
+        {
+            if (hit.transform.name == "box1")
+            {
+                selected_box = 0;
+            }
+            if (hit.transform.name == "box2")
+            {
+                selected_box = 1;
+            }
+            if (hit.transform.name == "box3")
+            {
+                selected_box = 2;
+            }
+            if (hit.transform.name == "box4")
+            {
+                selected_box = 3;
+            }
+            if (hit.transform.name == "box5")
+            {
+                selected_box = 4;
+            }
+            if (hit.transform.name == "box6")
+            {
+                selected_box = 5;
+            }
+            if (hit.transform.name == "box7")
+            {
+                selected_box = 6;
+            }
+            if (hit.transform.name == "box8")
+            {
+                selected_box = 7;
+            }
+            if (hit.transform.name == "box9")
+            {
+                selected_box = 8;
+            }
+        }
     }
     void set_Color()
     {
