@@ -27,7 +27,7 @@ public class Tap_color_Chnge : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
-        set_Color();
+        
 
         Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
         RaycastHit hit;
@@ -80,8 +80,7 @@ public class Tap_color_Chnge : MonoBehaviour
         }
         if (count == 0)
         {
-            set_Color();
-           
+            set_Color();  
         }
     }
 }
