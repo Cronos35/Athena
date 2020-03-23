@@ -28,8 +28,8 @@ public class Tap_color_Chnge : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
-        
-
+        selected_Box();
+        check_color();
         Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
         RaycastHit hit;
         if (Physics.Raycast(ray, out hit))
@@ -47,8 +47,8 @@ public class Tap_color_Chnge : MonoBehaviour
                 if (Input.GetMouseButtonDown(0))
                 {
                     int rand = Random.Range(0, 8);
+                    box[selected_box] = rand;
                     hit.transform.GetComponent<SpriteRenderer>().sprite = colors[rand];
-
                 }
 
             }
@@ -118,16 +118,18 @@ public class Tap_color_Chnge : MonoBehaviour
     void check_color()
     {
         int count = 0;
-        for (int i = 0; i < 9; i++)
+        for(int i=0;i<9;i++)
         {
-            if (box[i]==question_value)
+            print(box[i]);
+            if(box[i]==question_value)
             {
                 count++;
             }
         }
-        if (count == 0)
+        if(count==0)
         {
-            set_Color();  
+            set_Color();
+            print("COLOR CHANGE");
         }
     }
 }
