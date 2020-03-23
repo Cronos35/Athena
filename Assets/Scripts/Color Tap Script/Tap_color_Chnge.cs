@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Tap_color_Chnge : MonoBehaviour
 {
@@ -17,6 +18,11 @@ public class Tap_color_Chnge : MonoBehaviour
     
     public int selected_box=0;
 
+    //HIDDEN SCORE
+    public Text txtScore;
+    public Text txtwrong;
+    public int score_correct_input = 0;
+    public int score_wrong_input = 0;
     //boxes
 
     void Start()
@@ -46,6 +52,16 @@ public class Tap_color_Chnge : MonoBehaviour
                 */
                 if (Input.GetMouseButtonDown(0))
                 {
+                    if(box[selected_box]==question_value)
+                    {
+                        score_correct_input++;
+                        txtScore.text = "CORRECT: " + score_correct_input.ToString();
+                    }
+                    else
+                    {
+                        score_wrong_input++;
+                        txtwrong.text = "WRONG: " + score_wrong_input.ToString();
+                    }
                     int rand = Random.Range(0, 8);
                     box[selected_box] = rand;
                     hit.transform.GetComponent<SpriteRenderer>().sprite = colors[rand];
