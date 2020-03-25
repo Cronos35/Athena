@@ -32,23 +32,20 @@ public class Tap_color_Chnge : MonoBehaviour
     {
         set_Color();
         set_Question();
-        selected_Box();
-        check_color();
-        display();
     }
 
     // Update is called once per frame
     void FixedUpdate()
     {
-        
+        selected_Box();
+        check_color();
         Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
         RaycastHit hit;
         if (Physics.Raycast(ray, out hit))
         {
            if(hit.transform.name!="question")
             {
-                selected_Box();
-                check_color();
+                
                 /*
                 if (Input.touchCount > 0)
                 {
