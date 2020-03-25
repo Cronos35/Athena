@@ -25,6 +25,9 @@ public class Tap_color_Chnge : MonoBehaviour
     public int score_wrong_input = 0;
     //boxes
 
+    //check
+    bool check_clr = false;
+
     void Start()
     {
         set_Color();
@@ -157,6 +160,7 @@ public class Tap_color_Chnge : MonoBehaviour
         {
             display();
         }
+        check_clr = true;
     }
     void display()
     {
