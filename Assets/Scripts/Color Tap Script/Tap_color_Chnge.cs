@@ -51,8 +51,10 @@ public class Tap_color_Chnge : MonoBehaviour
                 }
                 */
                 if (Input.GetMouseButtonDown(0))
+                //if (Input.touchCount > 0)
                 {
-                    if(box[selected_box]==question_value)
+                    //Touch touch = Input.GetTouch(0);
+                    if (box[selected_box]==question_value)
                     {
                         score_correct_input++;
                         txtScore.text = "CORRECT: " + score_correct_input.ToString();
@@ -62,9 +64,16 @@ public class Tap_color_Chnge : MonoBehaviour
                         score_wrong_input++;
                         txtwrong.text = "WRONG: " + score_wrong_input.ToString();
                     }
-                    int rand = Random.Range(0, 8);
-                    box[selected_box] = rand;
-                    hit.transform.GetComponent<SpriteRenderer>().sprite = colors[rand];
+                    while(true)
+                    {
+                        int rand = Random.Range(0, 8);
+                        if(box[selected_box]!=rand)
+                        {
+                            box[selected_box] = rand;
+                            break;
+                        }
+                        
+                    }
                 }
 
             }
@@ -122,7 +131,6 @@ public class Tap_color_Chnge : MonoBehaviour
         {
             int rand = Random.Range(0, 8);
             box[i] = rand;
-            boxes[i].transform.GetComponent<SpriteRenderer>().sprite = colors[rand];
         }
     }
     void set_Question()
@@ -136,7 +144,6 @@ public class Tap_color_Chnge : MonoBehaviour
         int count = 0;
         for(int i=0;i<9;i++)
         {
-            print(box[i]);
             if(box[i]==question_value)
             {
                 count++;
@@ -145,7 +152,17 @@ public class Tap_color_Chnge : MonoBehaviour
         if(count==0)
         {
             set_Color();
-            print("COLOR CHANGE");
+        }
+        else
+        {
+            display();
+        }
+    }
+    void display()
+    {
+        for(int i=0;i<9;i++)
+        {
+            boxes[i].transform.GetComponent<SpriteRenderer>().sprite = colors[box[i]];
         }
     }
 }
