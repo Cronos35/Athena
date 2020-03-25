@@ -24,14 +24,12 @@ public class Tap_color_Chnge : MonoBehaviour
     public int score_correct_input = 0;
     public int score_wrong_input = 0;
     //boxes
-
-    //check
-    bool check_clr = false;
-
+    bool allowTouch = true;
     void Start()
     {
         set_Color();
         set_Question();
+        check_color();
     }
 
     // Update is called once per frame
@@ -45,42 +43,41 @@ public class Tap_color_Chnge : MonoBehaviour
         {
            if(hit.transform.name!="question")
             {
-                
-                /*
-                if (Input.touchCount > 0)
+                //if (Input.GetMouseButtonDown(0))
+                if(Input.touchCount>0)
                 {
                     Touch touch = Input.GetTouch(0);
-                    int rand = Random.Range(0, 8);
-                    hit.transform.GetComponent<SpriteRenderer>().sprite = boxes[rand];
-                }
-                */
-                if (Input.GetMouseButtonDown(0))
-                //if (Input.touchCount > 0)
-                {
-                    //Touch touch = Input.GetTouch(0);
-                    if (box[selected_box]==question_value)
+
+                    if(allowTouch==true)
                     {
-                        score_correct_input++;
-                        txtScore.text = "CORRECT: " + score_correct_input.ToString();
-                    }
-                    else
-                    {
-                        score_wrong_input++;
-                        txtwrong.text = "WRONG: " + score_wrong_input.ToString();
-                    }
-                    while(true)
-                    {
-                        int rand = Random.Range(0, 8);
-                        if(box[selected_box]!=rand)
+                        allowTouch = false;
+                        if (box[selected_box] == question_value)
                         {
-                            box[selected_box] = rand;
-                            break;
+                            score_correct_input++;
+                            txtScore.text = "CORRECT: " + score_correct_input.ToString();
+                        }
+                        else
+                        {
+                            score_wrong_input++;
+                            txtwrong.text = "WRONG: " + score_wrong_input.ToString();
+                        }
+                        while (true)
+                        {
+                            int rand = Random.Range(0, 8);
+                            if (box[selected_box] != rand)
+                            {
+                                box[selected_box] = rand;
+                                break;
+                            }
                         }
                     }
                 }
+                else
+                {
+                    allowTouch = true;
+                }
             }
         }
-        
     }
 
     void selected_Box()
@@ -159,7 +156,6 @@ public class Tap_color_Chnge : MonoBehaviour
         {
             display();
         }
-        check_clr = true;
     }
     void display()
     {
