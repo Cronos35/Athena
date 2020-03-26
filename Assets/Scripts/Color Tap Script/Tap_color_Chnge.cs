@@ -21,6 +21,13 @@ public class Tap_color_Chnge : MonoBehaviour
     //HIDDEN SCORE
     public Text txtScore;
     public Text txtwrong;
+
+    //Penalty For Not touching
+    public Text txtpenalty;
+    float penaltyTime = 2f;//Initial Penalty Time
+    float timeLeft;
+
+    public int totalpentalty = 0;
     public int score_correct_input = 0;
     public int score_wrong_input = 0;
     //boxes
@@ -37,6 +44,7 @@ public class Tap_color_Chnge : MonoBehaviour
     {
         selected_Box();
         check_color();
+        penalty();
         Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
         RaycastHit hit;
         if (Physics.Raycast(ray, out hit))
@@ -162,6 +170,30 @@ public class Tap_color_Chnge : MonoBehaviour
         for(int i=0;i<9;i++)
         {
             boxes[i].transform.GetComponent<SpriteRenderer>().sprite = colors[box[i]];
+        }
+    }
+    void penalty()
+    {
+        penaltyTime -= 1 * Time.deltaTime;
+        txtpenalty.text = penaltyTime.ToString("0");
+        Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+        RaycastHit hit;
+        if (Physics.Raycast(ray, out hit))
+        {
+            if (Input.touchCount > 0)
+            {
+                Touch touch = Input.GetTouch(0);
+                if (penaltyTime <= 0)
+                {
+                    penaltyTime = 2;
+                }
+            }
+        }
+        if (txtpenalty.text=="-1")
+        {
+            totalpentalty++;
+            penaltyTime = 2;
+            print("Total Penalty: "+totalpentalty);
         }
     }
 }
