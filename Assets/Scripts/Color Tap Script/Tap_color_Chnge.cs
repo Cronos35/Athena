@@ -38,13 +38,19 @@ public class Tap_color_Chnge : MonoBehaviour
     public Text countDowntxt;
     bool gameStop = false;
 
+    //Countdown to start the game
+    public int gameStartTimer;
+    public Text gameStarttxt;
 
+    //ALL BOXES
+    public GameObject allboxes;
     void Start()
     {
+        allboxes.SetActive(false);
         set_Color();
         set_Question();
         check_color();
-        StartCoroutine(CountDown());
+        StartCoroutine(StartGame());
     }
 
     // Update is called once per frame
@@ -210,9 +216,24 @@ public class Tap_color_Chnge : MonoBehaviour
         while(countDownTimer>=0)
         {
             countDowntxt.text = countDownTimer.ToString();
+            countDowntxt.text = countDownTimer.ToString();
             yield return new WaitForSeconds(1f);
             countDownTimer--;
         }
         gameStop = true;
+    }
+    IEnumerator StartGame()
+    {
+        while (gameStartTimer>0)
+        {
+            gameStarttxt.text = gameStartTimer.ToString();
+            yield return new WaitForSeconds(1f);
+            gameStartTimer--;
+        }
+        gameStarttxt.text = "GO!";
+        yield return new WaitForSeconds(1f);
+        allboxes.SetActive(true);
+        Destroy(gameStarttxt);
+        StartCoroutine(CountDown());
     }
 }
