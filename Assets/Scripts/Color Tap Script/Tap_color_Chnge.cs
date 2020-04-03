@@ -32,57 +32,68 @@ public class Tap_color_Chnge : MonoBehaviour
     public int score_wrong_input = 0;
     //boxes
     bool allowTouch = true;
+
+    //Countdown for game to stop
+    public int countDownTimer;
+    public Text countDowntxt;
+    bool gameStop = false;
+
+
     void Start()
     {
         set_Color();
         set_Question();
         check_color();
+        StartCoroutine(CountDown());
     }
 
     // Update is called once per frame
     void FixedUpdate()
     {
-        selected_Box();
-        check_color();
-        penalty();
-        Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-        RaycastHit hit;
-        if (Physics.Raycast(ray, out hit))
+        if(gameStop!=true)
         {
-           if(hit.transform.name!="question")
+            selected_Box();
+            check_color();
+            penalty();
+            Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+            RaycastHit hit;
+            if (Physics.Raycast(ray, out hit))
             {
-                //if (Input.GetMouseButtonDown(0))
-                if(Input.touchCount>0)
+                if (hit.transform.name != "question")
                 {
-                    Touch touch = Input.GetTouch(0);
-
-                    if(allowTouch==true)
+                    //if (Input.GetMouseButtonDown(0))
+                    if (Input.touchCount > 0)
                     {
-                        allowTouch = false;
-                        if (box[selected_box] == question_value)
+                        Touch touch = Input.GetTouch(0);
+
+                        if (allowTouch == true)
                         {
-                            score_correct_input++;
-                            txtScore.text = "CORRECT: " + score_correct_input.ToString();
-                        }
-                        else
-                        {
-                            score_wrong_input++;
-                            txtwrong.text = "WRONG: " + score_wrong_input.ToString();
-                        }
-                        while (true)
-                        {
-                            int rand = Random.Range(0, 8);
-                            if (box[selected_box] != rand)
+                            allowTouch = false;
+                            if (box[selected_box] == question_value)
                             {
-                                box[selected_box] = rand;
-                                break;
+                                score_correct_input++;
+                                txtScore.text = "CORRECT: " + score_correct_input.ToString();
+                            }
+                            else
+                            {
+                                score_wrong_input++;
+                                txtwrong.text = "WRONG: " + score_wrong_input.ToString();
+                            }
+                            while (true)
+                            {
+                                int rand = Random.Range(0, 8);
+                                if (box[selected_box] != rand)
+                                {
+                                    box[selected_box] = rand;
+                                    break;
+                                }
                             }
                         }
                     }
-                }
-                else
-                {
-                    allowTouch = true;
+                    else
+                    {
+                        allowTouch = true;
+                    }
                 }
             }
         }
@@ -193,5 +204,15 @@ public class Tap_color_Chnge : MonoBehaviour
             penaltyTime = 1;
             print("Total Penalty: "+totalpentalty);
         }
+    }
+    IEnumerator CountDown()
+    {
+        while(countDownTimer>=0)
+        {
+            countDowntxt.text = countDownTimer.ToString();
+            yield return new WaitForSeconds(1f);
+            countDownTimer--;
+        }
+        gameStop = true;
     }
 }
