@@ -976,7 +976,7 @@ MonoBehaviour:
   totalpentalty: 0
   score_correct_input: 0
   score_wrong_input: 0
-  countDownTimer: 0
+  countDownTimer: 15
   countDowntxt: {fileID: 1170172534}
 --- !u!4 &863433615
 Transform:
