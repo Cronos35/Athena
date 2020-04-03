@@ -24,7 +24,7 @@ public class Tap_color_Chnge : MonoBehaviour
 
     //Penalty For Not touching
     public Text txtpenalty;
-    float penaltyTime = 2f;//Initial Penalty Time
+    float penaltyTime = 1f;//Initial Penalty Time
     float timeLeft;
 
     public int totalpentalty = 0;
@@ -183,16 +183,14 @@ public class Tap_color_Chnge : MonoBehaviour
             if (Input.touchCount > 0)
             {
                 Touch touch = Input.GetTouch(0);
-                if (penaltyTime <= 0)
-                {
-                    penaltyTime = 2;
-                }
+                print("FROM TOUCH");
+                penaltyTime = 1;
             }
         }
         if (txtpenalty.text=="-1")
         {
             totalpentalty++;
-            penaltyTime = 2;
+            penaltyTime = 1;
             print("Total Penalty: "+totalpentalty);
         }
     }
