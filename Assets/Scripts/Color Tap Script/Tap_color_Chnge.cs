@@ -194,8 +194,8 @@ public class Tap_color_Chnge : MonoBehaviour
             if (Input.touchCount > 0)
             {
                 Touch touch = Input.GetTouch(0);
-                print("FROM TOUCH");
                 penaltyTime = 1;
+                print("Total Penalty: " + totalpentalty);
             }
         }
         if (txtpenalty.text=="-1")
