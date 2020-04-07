@@ -26,6 +26,7 @@ public class Tap_color_Chnge : MonoBehaviour
     public Text txtpenalty;
     float penaltyTime = 1f;//Initial Penalty Time
     float timeLeft;
+    bool turnonpenalty = false;
 
     public int totalpentalty = 0;
     public int score_correct_input = 0;
@@ -60,7 +61,10 @@ public class Tap_color_Chnge : MonoBehaviour
         {
             selected_Box();
             check_color();
-            penalty();
+            if(turnonpenalty==true)
+            {
+                penalty();
+            }
             Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
             RaycastHit hit;
             if (Physics.Raycast(ray, out hit))
@@ -221,6 +225,9 @@ public class Tap_color_Chnge : MonoBehaviour
             countDownTimer--;
         }
         gameStop = true;
+        allboxes.SetActive(false);
+        
+        get_GameResultScore();
     }
     IEnumerator StartGame()
     {
@@ -235,5 +242,14 @@ public class Tap_color_Chnge : MonoBehaviour
         allboxes.SetActive(true);
         Destroy(gameStarttxt);
         StartCoroutine(CountDown());
+        turnonpenalty = true;
+    }
+    void get_GameResultScore()
+    {
+        int correct = score_correct_input;
+        int wrong = score_wrong_input;
+        int penalty = totalpentalty;
+        int result = (correct - wrong) - penalty;
+        print(result);
     }
 }
