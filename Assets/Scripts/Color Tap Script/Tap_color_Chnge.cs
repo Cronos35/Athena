@@ -45,6 +45,12 @@ public class Tap_color_Chnge : MonoBehaviour
 
     //ALL BOXES
     public GameObject allboxes;
+
+    //Max Score
+    public int maxScore = 30;
+
+    //Total Game Score
+    public int gameScore;
     void Start()
     {
         allboxes.SetActive(false);
@@ -82,12 +88,10 @@ public class Tap_color_Chnge : MonoBehaviour
                             if (box[selected_box] == question_value)
                             {
                                 score_correct_input++;
-                                txtScore.text = "CORRECT: " + score_correct_input.ToString();
                             }
                             else
                             {
                                 score_wrong_input++;
-                                txtwrong.text = "WRONG: " + score_wrong_input.ToString();
                             }
                             while (true)
                             {
@@ -193,10 +197,11 @@ public class Tap_color_Chnge : MonoBehaviour
             boxes[i].transform.GetComponent<SpriteRenderer>().sprite = colors[box[i]];
         }
     }
+    //Penalty For being slow hehe
     void penalty()
     {
         penaltyTime -= 1 * Time.deltaTime;
-        txtpenalty.text = penaltyTime.ToString("0");
+        //txtpenalty.text = penaltyTime.ToString();
         Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
         RaycastHit hit;
         if (Physics.Raycast(ray, out hit))
@@ -208,7 +213,7 @@ public class Tap_color_Chnge : MonoBehaviour
                 print("Total Penalty: " + totalpentalty);
             }
         }
-        if (txtpenalty.text=="-1")
+        if (penaltyTime<=0)
         {
             totalpentalty++;
             penaltyTime = 1;
@@ -219,8 +224,7 @@ public class Tap_color_Chnge : MonoBehaviour
     {
         while(countDownTimer>=0)
         {
-            countDowntxt.text = countDownTimer.ToString();
-            countDowntxt.text = countDownTimer.ToString();
+            countDowntxt.text = "TIME: "+countDownTimer.ToString();
             yield return new WaitForSeconds(1f);
             countDownTimer--;
         }
@@ -240,16 +244,38 @@ public class Tap_color_Chnge : MonoBehaviour
         gameStarttxt.text = "GO!";
         yield return new WaitForSeconds(1f);
         allboxes.SetActive(true);
-        Destroy(gameStarttxt);
+        //Destroy(gameStarttxt);
+        gameStarttxt.text = "";
         StartCoroutine(CountDown());
         turnonpenalty = true;
     }
     void get_GameResultScore()
     {
+        int result;
         int correct = score_correct_input;
         int wrong = score_wrong_input;
         int penalty = totalpentalty;
-        int result = (correct - wrong) - penalty;
-        print(result);
+
+        if(correct>=30)
+        {
+            print("Ni lapaw ang score so");
+            correct = 30;
+        }
+        int difference = maxScore - correct;
+
+        print(correct);
+        print(wrong);
+        print(penalty);
+        print(difference);
+        result = correct - wrong;
+        
+        result -=difference;
+        
+        result -= penalty;
+
+        gameScore = result;
+        print("Game Score: "+gameScore);
+        gameStarttxt.fontSize = 48;
+        gameStarttxt.text = "TIME'S UP!";
     }
 }
