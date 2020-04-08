@@ -5,6 +5,7 @@ public class SwipeDetector : MonoBehaviour
 {
     private Vector2 fingerDownPosition;
     private Vector2 fingerUpPosition;
+   
 
     [SerializeField]
     private float minDistanceForSwipe = 1f;
