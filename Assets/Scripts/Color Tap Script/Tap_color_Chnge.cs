@@ -272,7 +272,10 @@ public class Tap_color_Chnge : MonoBehaviour
         result -=difference;
         
         result -= penalty;
-
+        if(result<=5)
+        {
+            result = 5;
+        }
         gameScore = result;
         print("Game Score: "+gameScore);
         gameStarttxt.fontSize = 48;
