@@ -19,7 +19,6 @@ public class AudioPlayback : MonoBehaviour
         audio = GetComponent<AudioSource>();
         touchControls = gameObject.GetComponent<TouchControls>();
         yPosition = transform.position.y;
-        TouchEvents.touchListener.onTouch += PressKey;
     }
 
     private void Update()
@@ -29,8 +28,11 @@ public class AudioPlayback : MonoBehaviour
             PressKey();
             return;
         }
+        else
+        {
+            alreadyPlayed = false;
+        }
 
-        alreadyPlayed = false;
         transform.SetPositionAndRotation(new Vector3(transform.position.x, yPosition, 0f), transform.rotation);
     }
 
@@ -42,12 +44,7 @@ public class AudioPlayback : MonoBehaviour
     public void PlayNoteOnStart()
     {
         transform.SetPositionAndRotation(new Vector3(transform.position.x, yPosition - 0.08f, 0f), transform.rotation);
-
-        if (!alreadyPlayed)
-        {
-            audio.PlayOneShot(audioToPlay, volume);
-            alreadyPlayed = true;
-        }
+        audio.PlayOneShot(audioToPlay, volume);
     }
 
     public void PressKey()
@@ -62,6 +59,6 @@ public class AudioPlayback : MonoBehaviour
             return;
         }
 
-        alreadyPlayed = false;
+        alreadyPlayed = true;
     }
 }

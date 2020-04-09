@@ -15,6 +15,7 @@ public class MusicGameManager : MonoBehaviour
     private TouchControls touchControls;
     private bool alreadyPlayed = false;
     private int totalKeyTaps = 0;
+    private int score = 30;
 
     public static string noteName;
     // Start is called before the first frame update
@@ -25,19 +26,27 @@ public class MusicGameManager : MonoBehaviour
         
         interval = 1f;
         audioplayer = GetComponent<AudioSource>();
-        StartCoroutine(PlayNotePattern());
+        //StartCoroutine(PlayNotePattern());
     }
         
     private void CheckKeyTaps(string noteName)
     {
-        if (noteName == notePattern[totalKeyTaps].name)
+        if (totalKeyTaps != 6)
         {
-            noteIndicator[totalKeyTaps].GetComponent<ColorChanger>().ChangeColor(false, true);
-            totalKeyTaps++;
-            return;
+            if (noteName == notePattern[totalKeyTaps].name)
+            {
+                noteIndicator[totalKeyTaps].GetComponent<ColorChanger>().ChangeColor(false, true);
+                totalKeyTaps++;
+                return;
+            }
+        }
+        else
+        {
+
         }
 
         noteIndicator[totalKeyTaps].GetComponent<ColorChanger>().ChangeColor(false, false);
+        score--;
     }
 
     private IEnumerator PlayNotePattern()
@@ -60,7 +69,6 @@ public class MusicGameManager : MonoBehaviour
         for (int i = 0; i < keyClips.Count; i++)
         {
             musicKeys[i].GetComponent<AudioPlayback>().PlayNoteOnStart();
-            //audioplayer.PlayOneShot(keyClips[i], 1f);
             yield return new WaitForSeconds(1f);
         }
 
