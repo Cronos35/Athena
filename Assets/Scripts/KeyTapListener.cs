@@ -15,17 +15,18 @@ public class KeyTapListener : MonoBehaviour
     }
 
     public event Action<string> onKeyTap;
+    public event Action onPlayButtonPress;
+
     public void sendKeyTap(string noteName)
     {
         onKeyTap?.Invoke(noteName);
     }
-    
-    // Start is called before the first frame update
-    void Start()
+
+    public void PressPlayButton()
     {
-    
+        onPlayButtonPress?.Invoke();
     }
-      
+    
     public void SetNoteName(string noteName)
     { 
         _noteName = noteName;

@@ -19,7 +19,6 @@ public class TouchControls : MonoBehaviour
 
     //if this is set to false, sprite that will have this script can move around the screen freely. Otherwise, it will only move in a linear fashion vertically or horizontally. 
     [SerializeField] private bool restrictMoveDirection = true;
-    private bool touchEventFired = false;
 
     private void Awake()
     {
@@ -40,7 +39,7 @@ public class TouchControls : MonoBehaviour
 
     private void Start()
     {
-        touchEventFired = false;   
+
     }
 
     // Start is called before the first frame update
