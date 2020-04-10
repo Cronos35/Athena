@@ -26,14 +26,4 @@ public class KeyTapListener : MonoBehaviour
     {
         onPlayButtonPress?.Invoke();
     }
-    
-    public void SetNoteName(string noteName)
-    { 
-        _noteName = noteName;
-    }
-
-    public string GetNoteName()
-    {
-        return _noteName;
-    }
 }

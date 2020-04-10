@@ -12,7 +12,7 @@ public class EndGame : MonoBehaviour
         if (collision.gameObject.CompareTag("Finish"))
         {
             Debug.Log("Reached end");
-            SceneManager.LoadScene("NumberSequence");
+            MazeEvents.mazeEventsListener.EndGame();
         }
     }
 }

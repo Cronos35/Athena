@@ -27,10 +27,8 @@ public class PlayButton : MonoBehaviour
                 eventFired = true;
             }
 
-            transform.SetPositionAndRotation(new Vector3(transform.position.x, yPosition, 0f), transform.rotation);
             return;
         }
-
         else
         {
             eventFired = false;
