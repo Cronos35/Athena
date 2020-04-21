@@ -13,10 +13,10 @@ public class MazeEvents : MonoBehaviour
         mazeEventsListener = this;
     }
 
-    public event Action onReachedMazeEnd;
+    public event Action OnReachedMazeEnd;
     public void EndGame()
     {
-        onReachedMazeEnd?.Invoke();
+        OnReachedMazeEnd?.Invoke();
     }
     // Update is called once per frame
 }

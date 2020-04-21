@@ -1,21 +1,21 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class MusicGameManager : MonoBehaviour
 {
-    [SerializeField] private List<AudioClip> notePattern;
-    [SerializeField] private List<GameObject> noteIndicator;
-    [SerializeField] private List<GameObject> musicKeys;
-    [SerializeField] private float BPM;
-    [SerializeField] private List<float> noteValues;
-    [SerializeField] private GameObject playButton;
+    [SerializeField] private readonly List<AudioClip> notePattern;
+    [SerializeField] private readonly List<GameObject> noteIndicator;
+    [SerializeField] private readonly List<GameObject> musicKeys;
+    [SerializeField] private readonly float BPM;
+    [SerializeField] private readonly List<float> noteValues;
+    [SerializeField] private readonly GameObject playButton;
 
     private float interval;
-    private SpriteRenderer spriteRenderer;
+    private readonly SpriteRenderer spriteRenderer;
     private AudioSource audioplayer;
-    private TouchControls touchControls;
-    private bool alreadyPlayed = false;
+    private readonly TouchControls touchControls;
     private bool executionFinished;
     private int totalCorrectTaps = 0;
     private int score = 30;
@@ -56,7 +56,7 @@ public class MusicGameManager : MonoBehaviour
 
     private IEnumerator PlayNotesOnStart(bool playButtonPressed)
     {
-        enableTouchControls(false);
+        EnableTouchControls(false);
 
         yield return new WaitForSeconds(0.25f);
 
@@ -75,7 +75,7 @@ public class MusicGameManager : MonoBehaviour
 
         if (playButtonPressed)
         {
-            enableTouchControls(true);
+            EnableTouchControls(true);
             yield break;
         }
 
@@ -85,7 +85,7 @@ public class MusicGameManager : MonoBehaviour
             yield return new WaitForSeconds(1f);
         }
 
-        enableTouchControls(true);
+        EnableTouchControls(true);
     }
 
     private void PlayNotePatternOnPress()
@@ -115,7 +115,7 @@ public class MusicGameManager : MonoBehaviour
         }
     }
 
-    private void enableTouchControls(bool enable)
+    private void EnableTouchControls(bool enable)
     {
         playButton.GetComponent<TouchControls>().enabled = enable;
 
@@ -125,5 +125,10 @@ public class MusicGameManager : MonoBehaviour
         }
 
         playButton.transform.SetPositionAndRotation(new Vector3(transform.position.x, transform.position.y + 0.08f, 0f), transform.rotation);
+    }
+
+    public void LoadNextLevel()
+    {
+        SceneManager.LoadScene(" ");
     }
 }
