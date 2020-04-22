@@ -1,0 +1,24 @@
+{
+    "Hobbies": [
+        {
+            "Work" : "Graphic Designer",
+            "Name" : "Graphic design ",
+            "Description" : "Graphic design is what graphic designers do most of the time, with the additional responsibility of working with clients to ensure that their design needs are met, so having at least basic knowledge in graphic design principles, such as color theory and using typefaces among others, will help you up your graphic design game."
+        },
+        {
+            "Work" : "Graphic Designer",
+            "Name" : "Sketching",
+            "Description" : "Having a foundation in sketching will be of great help because design is an iterative process, and sketching helps a graphic designer make as many iterations as possible in a short amount of time until they reach a variation in the design they are making that satisfies their client's design needs."
+        },
+        {
+            "Work":"Graphic Artist",
+            "Name": "Graphic Design",
+            "Description" : "Having familiarity with graphic design software like Photoshop is the start of a graphic artist's career. If you will be digital painting, it's best to learn how to use a graphic tablet because this will make make your digital painting a whole lot easier. This won't be needed if you'll be doing photo manipulation or vector graphics though, although a graphic tablet would still be of great help."
+        },
+        {
+            "Work":"Graphic Artist",
+            "Name": "Sketching",
+            "Description" : "Having a foundation in sketching will be of great help because design is an iterative process, and sketching helps a graphic artist make as many iterations as possible in a short amount of time. This is especially useful for character designers studying anatomy, environment and landscape design for comic books, video games, and other media."
+                }
+    ]
+}

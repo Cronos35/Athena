@@ -60,3 +60,10 @@ crashlytics-build.properties
 
 Assets/Scripts/SampleScene.unity
 Assets/Scripts/SampleScene.unity.meta
+Assets/Testing/TestScene.unity
+Assets/Testing/TestScene.unity.meta
+Assets/Testing.meta
+Assets/Testing/GameManager.cs
+Assets/Testing/GameManager.cs.meta
+Assets/Testing/WorkTest.json
+Assets/Testing/WorkTest.json.meta
