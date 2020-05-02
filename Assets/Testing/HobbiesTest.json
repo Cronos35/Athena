@@ -19,6 +19,31 @@
             "Work":"Graphic Artist",
             "Name": "Sketching",
             "Description" : "Having a foundation in sketching will be of great help because design is an iterative process, and sketching helps a graphic artist make as many iterations as possible in a short amount of time. This is especially useful for character designers studying anatomy, environment and landscape design for comic books, video games, and other media."
-                }
+        },
+        {
+            "Work":"Software Engineer",
+            "Name":"Solving logic problems",
+            "Description" : "the programming languages learned by computer programmers are tools to solve what are essentially logic problems. The job of the computer programmer is to translate a project’s requirements into software functionality to be achieved by the capabilities of the programming language, and solving logic problems develops an individual’s ability to solve problems by trial and error, theory development and testing, and hypotheses testing, which are all done very frequently in computer programming"
+        },
+        {
+            "Work":"Software Engineer",
+            "Name":"Solving Math problems",
+            "Description" : "just as with solving logic problems, solving math problems help develop our ability to formulate theories and test hypotheses among other skills, except with numbers, and Software Engineers deal with a lot of numbers with every project they work on."
+        },
+        {
+            "Work":"User Interface designer",
+            "Name":"Sketching",
+            "Description" : "while user interface software like Adobe XD may be available today, sketching still benefits the user interface designer in that it allows for rapid prototyping of the flow of the user interface on paper before making an actual mockup."
+        },
+        {
+            "Work":"User Interface designer",
+            "Name":"Playing Video games",
+            "Description" : "if there’s any piece of software that does a great job of teaching an eagle-eyed user what great user interface design is like, it’s video games. The interfaces of video games cater to a specific experience, and knowing what that experience is will help its user better understand the entirety of the game, which is one important task of a user interface designer"
+        },
+        {
+            "Work":"User Interface designer",
+            "Name":"Solving Logic problems",
+            "Description" : "User interface design in itself is a logic problem in behavior: knowing how different parts of the user interface trigger specific behaviors and how that caters towards the whole experience in the software is the main task of the user interface designer."
+        }        
     ]
 }

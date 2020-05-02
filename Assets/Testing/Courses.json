@@ -1,0 +1,13 @@
+{
+    "Courses":[
+        {
+            "Name" : "BS Information Technology",
+            "School" : "Asian college"
+        },
+
+        {
+            "Name" : "BS Computer science", 
+            "School" : "Silliman University"
+        }
+    ]
+}
