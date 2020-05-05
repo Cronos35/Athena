@@ -9,16 +9,8 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3d3f6cd578858414fb1dd44873f3d01e, type: 3}
-  m_Name: Asessment Games Manager
+  m_Script: {fileID: 11500000, guid: 45e0a11070fa64442a88ec0b8646fb24, type: 3}
+  m_Name: Work Info Manager
   m_EditorClassIdentifier: 
-  GamesList:
-  - Color Tap
-  - MazeGame
-  - MusicTap
-  - NumberSequence
-  - 
-  - 
-  - 
-  - 
-  workInfoManager: {fileID: 11400000, guid: f703eb49d80a9f84dad8e9d4f15f9ea7, type: 2}
+  WorkFile: {fileID: 4900000, guid: 8bafc65f1fe25624cb9242bddf8e7571, type: 3}
+  HobbiesFile: {fileID: 4900000, guid: 8b2e5c4e8ef05a14da08eeef8caee880, type: 3}

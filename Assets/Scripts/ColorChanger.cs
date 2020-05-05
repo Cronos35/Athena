@@ -17,10 +17,9 @@ public class ColorChanger : MonoBehaviour
         if (changeToDefaultColor)
         {
             spriteRenderer.color = Color.white;
+            return;
         }
-        else
-        {
-            spriteRenderer.color = correct ? Color.green : Color.red;
-        }
+
+        spriteRenderer.color = correct ? Color.green : Color.red;
     }
 }

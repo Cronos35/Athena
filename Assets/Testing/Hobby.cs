@@ -2,10 +2,17 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+[System.Serializable]
 public class Hobby
 {
-    public string Name { get; set; }
-    public string Work { get; set; }
-    public string Description { get; set; }
-    public bool IsSelected { get; set; }
+    public string Work;
+    public string Name;
+    public string Description;
+
+    private bool IsSelected;
+
+    public class HobbyList
+    {
+        public Hobby[] HobbiesWithDetails;
+    }
 }

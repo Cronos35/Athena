@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using System.Collections.Generic;
 
 [System.Serializable]
 public class Work
@@ -18,6 +16,11 @@ public class Work
     public List<Hobby> HobbiesSeparated = new List<Hobby>(); 
     public List<Intelligences> IntelligencesSeparated = new List<Intelligences>();
 
+    public string[] getHobbyNames()
+    {
+        return HobbiesSeparatedTemp;
+    }
+
     public void SplitToArray()
     {
         CoursesSeparated = Courses.Split(',');
@@ -25,23 +28,27 @@ public class Work
         IntelligencesSeparatedTemp = Intelligences.Split(',');
 
         int counter = 0;
-        //foreach (string hobby in HobbiesSeparatedTemp)
-        //{
-        //    HobbiesSeparated[counter].Name = hobby;
-        //    counter++;
-        //}
-
-        counter = 0;
         foreach (string intelligence in IntelligencesSeparatedTemp)
         {
             IntelligencesSeparatedTemp[counter] = intelligence.Trim();
             counter++;
         }
 
+        for (int i = 0; i < HobbiesSeparatedTemp.Length; i++)
+        {
+            HobbiesSeparatedTemp[i] = HobbiesSeparatedTemp[i].Trim();
+        }
+
+
         for (int i = 0; i < IntelligencesSeparatedTemp.Length; i++)
         {
             ToEnum(IntelligencesSeparatedTemp[i]);
         }
+    }
+
+    public void AddHobbyInfo(Hobby hobby)
+    {
+        HobbiesSeparated.Add(hobby);
     }
 
     private void ToEnum(string IntelligenceName)
@@ -80,5 +87,10 @@ public class Work
                 IntelligencesSeparated.Add(global::Intelligences.BodilyKinesthetic);
                 break;
         }
+    }
+
+    public class WorkList
+    {
+        public Work[] WorkwithDetails;
     }
 }

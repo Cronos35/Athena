@@ -6,8 +6,10 @@ using UnityEngine.SceneManagement;
 public class MazeGameManager : MonoBehaviour
 {
     [SerializeField] private readonly int score;
-    [SerializeField] GameObject nextButton;
+    [SerializeField] private GameObject nextButton;
+    [SerializeField] private AssessmentManager assessmentManager;
 
+    private Intelligences gameIntelligence = Intelligences.VisualSpatial;
     private float countDown = 30;
     // Start is called before the first frame update
     void Start()
@@ -30,6 +32,7 @@ public class MazeGameManager : MonoBehaviour
 
     public void LoadNextLevel()
     {
-        SceneManager.LoadScene("NumberSequence");
+        assessmentManager.IntelligencesScored[gameIntelligence] = score;
+        assessmentManager.LoadGame();
     }
 }

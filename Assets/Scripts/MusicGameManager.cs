@@ -5,18 +5,20 @@ using UnityEngine.SceneManagement;
 
 public class MusicGameManager : MonoBehaviour
 {
-    [SerializeField] private readonly List<AudioClip> notePattern;
-    [SerializeField] private readonly List<GameObject> noteIndicator;
-    [SerializeField] private readonly List<GameObject> musicKeys;
-    [SerializeField] private readonly float BPM;
-    [SerializeField] private readonly List<float> noteValues;
-    [SerializeField] private readonly GameObject playButton;
+    [SerializeField] private List<AudioClip> notePattern;
+    [SerializeField] private List<GameObject> noteIndicator;
+    [SerializeField] private List<GameObject> musicKeys;
+    [SerializeField] private float BPM;
+    [SerializeField] private List<float> noteValues;
+    [SerializeField] private GameObject nextButon;
+    [SerializeField] private GameObject playButton;
+    [SerializeField] private AssessmentManager assessmentManager;
 
+    private Intelligences gameIntelligence = Intelligences.Musical;
     private float interval;
     private readonly SpriteRenderer spriteRenderer;
     private AudioSource audioplayer;
     private readonly TouchControls touchControls;
-    private bool executionFinished;
     private int totalCorrectTaps = 0;
     private int score = 30;
 
@@ -24,7 +26,6 @@ public class MusicGameManager : MonoBehaviour
     // Start is called before the first frame update
     private void Awake()
     {
-        executionFinished = false;
         interval = 60f / BPM;
         audioplayer = GetComponent<AudioSource>();
     }
@@ -49,8 +50,10 @@ public class MusicGameManager : MonoBehaviour
 
             noteIndicator[totalCorrectTaps].GetComponent<ColorChanger>().ChangeColor(false, false);
             score--;
-
-            return;
+        }
+        else
+        {
+            nextButon.SetActive(true);
         }
     }
 
@@ -129,6 +132,7 @@ public class MusicGameManager : MonoBehaviour
 
     public void LoadNextLevel()
     {
-        SceneManager.LoadScene(" ");
+        assessmentManager.IntelligencesScored[gameIntelligence] = score;
+        assessmentManager.LoadGame();
     }
 }
